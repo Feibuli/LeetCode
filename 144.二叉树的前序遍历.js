@@ -44,7 +44,19 @@
  * @return {number[]}
  */
 var preorderTraversal = function(root) {
-  return root ? [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)] : [];
+  // 递归法
+  // return root ? [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)] : [];
+  // 迭代法
+  if (!root) return [];
+  let res = [];
+  let stack = [root];
+  while (stack.length) {
+    let node = stack.pop();
+    res.push(node.val);
+    if (node.right) stack.push(node.right);
+    if (node.left) stack.push(node.left);
+  }
+  return res;
 };
 // @lc code=end
 
