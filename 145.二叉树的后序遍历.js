@@ -44,7 +44,24 @@
  */
 var postorderTraversal = function(root) {
   // 递归
-  return root ? [...postorderTraversal(root.left), ...postorderTraversal(root.right), root.val] : [];
+  // return root ? [...postorderTraversal(root.left), ...postorderTraversal(root.right), root.val] : [];
+  // 迭代 核心思路:
+  // 使用颜色标记节点的状态，新节点为白色，已访问的节点为灰色。
+  // 如果遇到的节点为白色，则将其标记为灰色，然后将其左子节点、右子节点、自身依次入栈。
+  // 如果遇到的节点为灰色，则将节点的值输出。
+  // 为优化空间，节点数据类型为TreeNode即可代表白色，number即可代表灰色
+  let res = [];
+  let stack = [root];
+  while (stack.length) {
+    let node = stack.pop();
+    if(!node) continue;
+    if (node instanceof TreeNode) {
+      stack.push(node.val, node.right, node.left);
+    } else {
+      res.push(node);
+    }
+  }
+  return res;
 };
 // @lc code=end
 
