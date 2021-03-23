@@ -56,7 +56,7 @@
  */
 var transpose = function(matrix) {
   // 十分巧妙的方法 交换矩阵的行索引与列索引
-  return matrix[0].map((y, xIndex) => matrix.map((x, yIndex) => x[xIndex]));
+  return matrix[0].map((x, xIndex) => matrix.map((y, yIndex) => y[xIndex]));
 };
 // @lc code=end
 
